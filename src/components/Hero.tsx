@@ -76,7 +76,7 @@ export default function Hero() {
                       </span>
                     </Reveal>
                     <Reveal animation="reveal-left">
-                      <h2 className="text-[72px] md:text-[100px] leading-[0.85] font-display font-black uppercase mb-8 drop-shadow-2xl">
+                      <h2 className="text-[72px] md:text-[110px] leading-[0.8] font-display font-black uppercase mb-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] tracking-tighter">
                         {slide.title}
                       </h2>
                     </Reveal>

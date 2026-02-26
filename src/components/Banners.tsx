@@ -49,19 +49,19 @@ export default function Banners() {
           <div className="md:col-span-3 h-full">
             <Reveal animation="reveal-left" className="h-full">
                 <div 
-                    className="relative overflow-hidden rounded-2xl p-12 min-h-[500px] flex flex-col justify-center bg-[var(--secondary)] text-white shadow-2xl group h-full"
+                    className="relative overflow-hidden rounded-[2rem] p-12 min-h-[500px] flex flex-col justify-center bg-gradient-to-br from-[var(--secondary)] to-[var(--secondary-dark)] text-white shadow-[0_30px_100px_rgba(36,88,61,0.25)] group h-full"
                 >
                     {/* Background Graphic */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/10 blur-[100px] rounded-full" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-white/5 blur-[120px] rounded-full" />
                     
                     <div className="relative z-10">
-                        <span className="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-[3px] mb-6">Mastermind Deal</span>
-                        <h3 className="text-6xl font-display uppercase mb-10 leading-[0.95] tracking-tight">
-                        Fresh flavor for<br />your daily life
+                        <span className="inline-block px-5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-[9px] font-black uppercase tracking-[4px] mb-8 border border-white/10">Mastermind Deal</span>
+                        <h3 className="text-7xl font-display uppercase mb-12 leading-[0.85] tracking-tighter drop-shadow-lg">
+                        Fresh flavor for<br /><span className="text-[var(--yellow)]">your daily life</span>
                         </h3>
                         
                         {/* Countdown */}
-                        <div className="flex gap-4 mb-10">
+                        <div className="flex gap-4 mb-12">
                         {[
                             { value: timeLeft.days, label: "Days" },
                             { value: timeLeft.hours, label: "Hrs" },
@@ -69,10 +69,10 @@ export default function Banners() {
                             { value: timeLeft.seconds, label: "Secs" },
                         ].map((item, i) => (
                             <div key={i} className="text-center">
-                            <div className="bg-white/10 backdrop-blur-md w-16 h-16 rounded-2xl flex items-center justify-center border border-white/20 mb-2">
-                                <span className="text-3xl font-display text-white">{String(item.value).padStart(2, "0")}</span>
+                            <div className="bg-white/5 backdrop-blur-xl w-20 h-20 rounded-[1.5rem] flex items-center justify-center border border-white/10 mb-3 shadow-inner">
+                                <span className="text-4xl font-display text-white">{String(item.value).padStart(2, "0")}</span>
                             </div>
-                            <p className="text-[9px] font-black uppercase tracking-widest opacity-60">{item.label}</p>
+                            <p className="text-[8px] font-black uppercase tracking-[3px] opacity-40">{item.label}</p>
                             </div>
                         ))}
                         </div>
@@ -82,7 +82,7 @@ export default function Banners() {
                           href="https://wa.me/8801715322138?text=I'm interested in the deal of the day!"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-yellow"
+                          className="btn-yellow !rounded-2xl !py-5 !px-10 shadow-xl hover:shadow-[var(--yellow)]/30"
                         >
                             Grab the Deal
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,10 +93,10 @@ export default function Banners() {
                     </div>
 
                     {/* Price badge */}
-                    <div className="absolute top-12 right-12 w-28 h-28 bg-[var(--yellow)] rounded-full flex items-center justify-center shadow-2xl rotate-12 transition-transform group-hover:scale-110 group-hover:rotate-0">
+                    <div className="absolute top-12 right-12 w-32 h-32 bg-[var(--yellow)] rounded-full flex items-center justify-center shadow-2xl rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-0">
                         <div className="text-center text-[var(--text-dark)]">
-                            <p className="text-[10px] font-black opacity-60">FROM</p>
-                            <p className="text-3xl font-display">৳100</p>
+                            <p className="text-[9px] font-black opacity-50 tracking-widest">FROM</p>
+                            <p className="text-4xl font-display">৳100</p>
                         </div>
                     </div>
                 </div>
@@ -107,42 +107,42 @@ export default function Banners() {
           <div className="md:col-span-2 h-full">
             <Reveal animation="reveal-right" className="h-full">
                 <div 
-                    className="relative overflow-hidden rounded-2xl min-h-[500px] flex flex-col justify-between group h-full"
-                    style={{ backgroundColor: "#e8e4de" }}
+                    className="relative overflow-hidden rounded-[2rem] min-h-[500px] flex flex-col justify-between group h-full shadow-[0_30px_80px_rgba(0,0,0,0.05)] border border-gray-100"
+                    style={{ backgroundColor: "#fbfaf8" }}
                 >
                     {/* Subtle warm overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/5 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-black/[0.02] pointer-events-none" />
 
                     {/* Top Content */}
-                    <div className="relative z-10 p-10 pb-0">
-                        <span className="inline-block px-4 py-1 rounded-full bg-black/5 text-[10px] font-black uppercase tracking-[3px] text-[var(--text-dark)] mb-4">Our Collection</span>
-                        <h3 className="text-4xl font-display uppercase leading-none text-[var(--text-dark)]">
-                          Born Fresh<br />Served Real
+                    <div className="relative z-10 p-12 pb-0">
+                        <span className="inline-block px-5 py-1.5 rounded-full bg-black/5 text-[9px] font-black uppercase tracking-[4px] text-[var(--text-dark)] mb-6 border border-black/5">Our Collection</span>
+                        <h3 className="text-5xl font-display uppercase leading-[0.9] text-[var(--text-dark)] tracking-tighter">
+                          Born Fresh<br /><span className="text-[var(--primary)]">Served Real</span>
                         </h3>
                     </div>
 
                     {/* Product Image */}
-                    <div className="relative flex-grow flex items-end justify-center mt-6 px-4">
-                        <div className="relative w-full h-[320px] group-hover:scale-[1.03] transition-transform duration-1000">
+                    <div className="relative flex-grow flex items-end justify-center mt-12 px-8 pb-12">
+                        <div className="relative w-full h-[350px] group-hover:scale-[1.05] transition-transform duration-1000 ease-out">
                           <Image
                             src="/assets/bottles/real_photos/fruit_bg.png"
                             alt="2Go Fresh Juice Collection"
                             fill
-                            className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
+                            className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
                           />
                         </div>
 
                         {/* Floating Badge */}
-                        <div className="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur-md rounded-2xl px-5 py-3 shadow-lg border border-white/50">
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-full bg-[var(--secondary)] flex items-center justify-center">
-                              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        <div className="absolute bottom-12 left-12 z-20 bg-white/80 backdrop-blur-xl rounded-[1.5rem] px-6 py-4 shadow-2xl border border-white/50">
+                          <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-[var(--secondary)] flex items-center justify-center text-white shadow-lg">
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
                             <div>
-                              <p className="text-[10px] font-black text-[var(--text-dark)]">100% Fresh</p>
-                              <p className="text-[8px] text-gray-400 font-bold">No Preservatives</p>
+                              <p className="text-[11px] font-black text-[var(--text-dark)] uppercase tracking-wider">100% Fresh</p>
+                              <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">No Preservatives</p>
                             </div>
                           </div>
                         </div>
