@@ -53,9 +53,11 @@ export default function Reviews() {
 
       <div className="container relative z-10">
         <Reveal>
-            <div className="section-title text-center mb-24">
-                <span className="text-[var(--primary)] font-black uppercase tracking-[5px] text-xs">Customer Stories</span>
-                <h2 className="text-6xl font-display uppercase mt-4">What Dhaka Says<br/>About 2Go</h2>
+            <div className="section-title text-center mb-32">
+                <span className="text-[var(--primary)] font-black uppercase tracking-[10px] text-[10px] block mb-6">Trusted Choice</span>
+                <h2 className="text-7xl md:text-8xl font-display uppercase mt-4 tracking-tighter leading-[0.85]">
+                  What Dhaka <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.1)] [-webkit-text-stroke:2px_var(--text-dark)]">Says</span><br/>About 2Go
+                </h2>
             </div>
         </Reveal>
 

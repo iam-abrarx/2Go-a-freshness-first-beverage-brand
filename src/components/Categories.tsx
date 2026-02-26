@@ -94,18 +94,18 @@ export default function Categories() {
                 </div>
 
                 {/* Content Container */}
-                <div className={`absolute inset-8 z-10 rounded-xl ${cat.textColorSelection === "dark" ? "bg-black/5 border-black/10" : "bg-white/10 border-white/20"} backdrop-blur-xl border p-10 flex flex-col justify-between transition-all duration-700 group-hover:bg-opacity-20`}>
-                  <div className="flex flex-col items-start gap-6">
+                <div className={`absolute inset-8 z-10 rounded-2xl ${cat.textColorSelection === "dark" ? "bg-black/5 border-black/10" : "bg-white/10 border-white/20"} backdrop-blur-2xl border p-12 flex flex-col justify-between transition-all duration-700 group-hover:bg-opacity-20 shadow-inner`}>
+                  <div className="flex flex-col items-start gap-8">
                     {cat.badge && (
-                      <span className={`${cat.textColorSelection === "dark" ? "bg-black text-white" : "bg-white text-[var(--text-dark)]"} text-[10px] font-black uppercase px-4 py-1.5 rounded-lg shadow-2xl transition-transform group-hover:scale-110`}>
+                      <span className={`${cat.textColorSelection === "dark" ? "bg-black text-white" : "bg-white text-[var(--text-dark)]"} text-[9px] font-black uppercase px-5 py-2 rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.1)] transition-transform group-hover:scale-110 tracking-widest`}>
                         {cat.badge}
                       </span>
                     )}
                     <div>
-                        <h3 className={`text-4xl font-display uppercase leading-none drop-shadow-sm ${cat.textColorSelection === "dark" ? "text-black" : "text-white"}`}>
+                        <h3 className={`text-5xl font-display uppercase leading-[0.85] tracking-tighter drop-shadow-md ${cat.textColorSelection === "dark" ? "text-black" : "text-white"}`}>
                           {cat.name}
                         </h3>
-                        <p className={`mt-4 font-black uppercase tracking-[3px] text-[10px] ${cat.textColorSelection === "dark" ? "text-black/50" : "text-white/60"}`}>
+                        <p className={`mt-5 font-black uppercase tracking-[4px] text-[9px] opacity-70 ${cat.textColorSelection === "dark" ? "text-black" : "text-white"}`}>
                           {cat.count}
                         </p>
                     </div>
