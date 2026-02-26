@@ -31,14 +31,14 @@ const videoReviews = [
   {
     name: "Sadia Rahman",
     role: "Food Blogger",
-    thumbnail: "/assets/bottles/real_photos/combine.png",
+    thumbnail: getAssetPath("/assets/bottles/real_photos/combine.png"),
     accent: "var(--primary)",
     caption: "\"Tried all 7 flavors — here's my honest ranking!\"",
   },
   {
     name: "Tanvir Hasan",
     role: "Fitness Enthusiast",
-    thumbnail: "/assets/bottles/real_photos/combine.png",
+    thumbnail: getAssetPath("/assets/bottles/real_photos/combine.png"),
     accent: "var(--secondary)",
     caption: "\"My go-to post-workout recovery drink\"",
   },
