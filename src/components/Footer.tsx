@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./Reveal";
+import { getAssetPath } from "@/lib/utils";
 
 export default function Footer() {
   const menuLinks = [
@@ -65,7 +66,7 @@ export default function Footer() {
             <Reveal animation="reveal-left">
               <Link href="/" className="inline-block mb-6">
                 <Image
-                  src="/assets/logo.png"
+                  src={getAssetPath("/assets/logo.png")}
                   alt="2Go Logo"
                   width={120}
                   height={60}

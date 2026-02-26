@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "./Reveal";
 import { products } from "@/data/products";
+import { getAssetPath } from "@/lib/utils";
 
 const categories = [
   {
@@ -12,7 +13,7 @@ const categories = [
     name: "JUICES",
     count: "4+ Items",
     color: "#d64c4c", // Signature Red
-    image: "/assets/bottles/Watermelon Bottle.png",
+    image: getAssetPath("/assets/bottles/Watermelon Bottle.png"),
     badge: "Trending",
   },
   {
@@ -20,7 +21,7 @@ const categories = [
     name: "SHAKES",
     count: "1+ Items",
     color: "#307351", // Forest Green
-    image: "/assets/bottles/Fruit Fizz Bottle.png",
+    image: getAssetPath("/assets/bottles/Fruit Fizz Bottle.png"),
     badge: "Bestseller",
   },
   {
@@ -29,7 +30,7 @@ const categories = [
     count: "1 Item",
     color: "#F7D08A", // Creamy Yellow
     textColorSelection: "dark",
-    image: "/assets/bottles/Cold Coffee Bottle.png",
+    image: getAssetPath("/assets/bottles/Cold Coffee Bottle.png"),
     badge: "New",
   },
 ];

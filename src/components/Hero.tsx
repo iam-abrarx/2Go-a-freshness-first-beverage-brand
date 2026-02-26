@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 import Image from "next/image";
 import Reveal from "./Reveal";
+import { getAssetPath } from "@/lib/utils";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -17,7 +18,7 @@ const slides = [
     cta: "Shop Now",
     ctaLink: "#categories",
     color: "#d64c4c", // Red
-    image: "/assets/bottles/Fruit Fizz Bottle.png",
+    image: getAssetPath("/assets/bottles/Fruit Fizz Bottle.png"),
   },
   {
     subtitle: "No Preservatives Added.",
@@ -26,7 +27,7 @@ const slides = [
     cta: "View Menu",
     ctaLink: "#categories",
     color: "#307351", // Green
-    image: "/assets/bottles/Watermelon Bottle.png",
+    image: getAssetPath("/assets/bottles/Watermelon Bottle.png"),
   },
   {
     subtitle: "Daily Natural Energy.",
@@ -36,7 +37,7 @@ const slides = [
     ctaLink: "#locations",
     color: "#F3CA40", // Yellow
     textColor: "#1a1a1a",
-    image: "/assets/bottles/Cold Coffee Bottle.png",
+    image: getAssetPath("/assets/bottles/Cold Coffee Bottle.png"),
   },
 ];
 

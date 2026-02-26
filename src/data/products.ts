@@ -1,3 +1,5 @@
+import { getAssetPath } from "@/lib/utils";
+
 export interface Product {
   id: number;
   name: string;
@@ -22,7 +24,7 @@ export const products: Product[] = [
     size: "250ml",
     price: 150,
     originalPrice: 180,
-    image: "/assets/bottles/Fruit Fizz Bottle.png",
+    image: getAssetPath("/assets/bottles/Fruit Fizz Bottle.png"),
     specialNotes: [
       "Consume within one day of purchase",
       "Keep refrigerated below 4°C for up to 2–3 hours if storing",
@@ -39,8 +41,8 @@ export const products: Product[] = [
     size: "250ml",
     price: 120,
     originalPrice: 150,
-    image: "/assets/bottles/Watermelon Bottle.png",
-    realImage: "/assets/bottles/real_photos/watermelon.png",
+    image: getAssetPath("/assets/bottles/Watermelon Bottle.png"),
+    realImage: getAssetPath("/assets/bottles/real_photos/watermelon.png"),
     specialNotes: [
       "Consume within one day of purchase",
       "Keep refrigerated below 4°C for up to 2–3 hours if storing",
@@ -55,8 +57,8 @@ export const products: Product[] = [
     ingredients: "Fresh papaya, purified water",
     size: "250ml",
     price: 140,
-    image: "/assets/bottles/Papaya Bottle.png",
-    realImage: "/assets/bottles/real_photos/papaya.png",
+    image: getAssetPath("/assets/bottles/Papaya Bottle.png"),
+    realImage: getAssetPath("/assets/bottles/real_photos/papaya.png"),
     specialNotes: [
       "Consume within one day of purchase",
       "Keep refrigerated below 4°C for up to 2–3 hours if storing",
@@ -71,8 +73,8 @@ export const products: Product[] = [
     ingredients: "Fresh lemon, guava, mint leaves, green chili, purified water",
     size: "250ml",
     price: 130,
-    image: "/assets/bottles/Fruit Fizz Bottle.png",
-    realImage: "/assets/bottles/real_photos/lemon_guava.png",
+    image: getAssetPath("/assets/bottles/Fruit Fizz Bottle.png"),
+    realImage: getAssetPath("/assets/bottles/real_photos/lemon_guava.png"),
     specialNotes: [
       "Subtle kick of green chili",
       "Adventure in a bottle",
@@ -87,8 +89,8 @@ export const products: Product[] = [
     ingredients: "Fresh watermelon, pineapple, mint leaves, purified water",
     size: "250ml",
     price: 150,
-    image: "/assets/bottles/Fruit Fizz Bottle.png",
-    realImage: "/assets/bottles/real_photos/Fizz.png",
+    image: getAssetPath("/assets/bottles/Fruit Fizz Bottle.png"),
+    realImage: getAssetPath("/assets/bottles/real_photos/Fizz.png"),
     specialNotes: [
       "Watermelon + Pineapple + Mint",
       "Naturally lively flavor"
@@ -102,7 +104,7 @@ export const products: Product[] = [
     ingredients: "Fresh banana, dark chocolate, milk, small amount of sugar",
     size: "250ml",
     price: 180,
-    image: "/assets/bottles/Papaya Bottle.png",
+    image: getAssetPath("/assets/bottles/Papaya Bottle.png"),
   },
   {
     id: 6,
@@ -112,8 +114,8 @@ export const products: Product[] = [
     ingredients: "Brewed coffee, milk, small amount of sugar",
     size: "250ml",
     price: 160,
-    image: "/assets/bottles/Cold Coffee Bottle.png",
-    realImage: "/assets/bottles/real_photos/cold_coffee.png",
+    image: getAssetPath("/assets/bottles/Cold Coffee Bottle.png"),
+    realImage: getAssetPath("/assets/bottles/real_photos/cold_coffee.png"),
   },
 ];
 

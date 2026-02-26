@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/utils";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ export default function Header() {
           <div className="flex justify-start items-center lg:w-[30%] shrink-0">
             <Link href="/" className="relative z-10 hover:scale-105 transition-transform flex items-center">
               <Image
-                src="/assets/logo.png"
+                src={getAssetPath("/assets/logo.png")}
                 alt="2Go Logo"
                 width={100}
                 height={50}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Reveal from "./Reveal";
+import { getAssetPath } from "@/lib/utils";
 
 export default function Banners() {
   const [timeLeft, setTimeLeft] = useState({
@@ -125,7 +126,7 @@ export default function Banners() {
                     <div className="relative flex-grow flex items-end justify-center mt-12 px-8 pb-12">
                         <div className="relative w-full h-[350px] group-hover:scale-[1.05] transition-transform duration-1000 ease-out">
                           <Image
-                            src="/assets/bottles/real_photos/fruit_bg.png"
+                            src={getAssetPath("/assets/bottles/real_photos/fruit_bg.png")}
                             alt="2Go Fresh Juice Collection"
                             fill
                             className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"

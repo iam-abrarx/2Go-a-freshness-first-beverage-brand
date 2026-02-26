@@ -1,6 +1,7 @@
 "use client";
 
 import Reveal from "./Reveal";
+import { getAssetPath } from "@/lib/utils";
 
 const reviews = [
   {
