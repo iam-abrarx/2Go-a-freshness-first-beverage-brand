@@ -43,70 +43,20 @@ export default function Banners() {
   }, []);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="banners" className="py-24 bg-white overflow-hidden">
       <div className="container">
+        <Reveal>
+            <div className="section-title text-center max-w-2xl mx-auto mb-16">
+                <span className="text-[var(--primary)] font-black uppercase tracking-[5px] text-xs">Recommended</span>
+                <h2 className="text-5xl font-display uppercase mt-4 leading-tight">Daily Freshness Highlights</h2>
+                <div className="w-16 h-1 bg-[var(--yellow)] mx-auto mt-6 rounded-full" />
+            </div>
+        </Reveal>
+
         <div className="grid md:grid-cols-5 gap-8">
-          {/* Left Banner - Deal of the Day (Green Theme) */}
+          {/* Left Banner - Product Showcase (Large) */}
           <div className="md:col-span-3 h-full">
             <Reveal animation="reveal-left" className="h-full">
-                <div 
-                    className="relative overflow-hidden rounded-[2rem] p-12 min-h-[500px] flex flex-col justify-center bg-gradient-to-br from-[var(--secondary)] to-[var(--secondary-dark)] text-white shadow-[0_30px_100px_rgba(36,88,61,0.25)] group h-full"
-                >
-                    {/* Background Graphic */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-white/5 blur-[120px] rounded-full" />
-                    
-                    <div className="relative z-10">
-                        <span className="inline-block px-5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-[9px] font-black uppercase tracking-[4px] mb-8 border border-white/10">Mastermind Deal</span>
-                        <h3 className="text-7xl font-display uppercase mb-12 leading-[0.85] tracking-tighter drop-shadow-lg">
-                        Fresh flavor for<br /><span className="text-[var(--yellow)]">your daily life</span>
-                        </h3>
-                        
-                        {/* Countdown */}
-                        <div className="flex gap-4 mb-12">
-                        {[
-                            { value: timeLeft.days, label: "Days" },
-                            { value: timeLeft.hours, label: "Hrs" },
-                            { value: timeLeft.minutes, label: "Mins" },
-                            { value: timeLeft.seconds, label: "Secs" },
-                        ].map((item, i) => (
-                            <div key={i} className="text-center">
-                            <div className="bg-white/5 backdrop-blur-xl w-20 h-20 rounded-[1.5rem] flex items-center justify-center border border-white/10 mb-3 shadow-inner">
-                                <span className="text-4xl font-display text-white">{String(item.value).padStart(2, "0")}</span>
-                            </div>
-                            <p className="text-[8px] font-black uppercase tracking-[3px] opacity-40">{item.label}</p>
-                            </div>
-                        ))}
-                        </div>
-
-                        <div className="flex gap-4">
-                        <a
-                          href="https://wa.me/8801715322138?text=I'm interested in the deal of the day!"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-yellow !rounded-2xl !py-5 !px-10 shadow-xl hover:shadow-[var(--yellow)]/30"
-                        >
-                            Grab the Deal
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </a>
-                        </div>
-                    </div>
-
-                    {/* Price badge */}
-                    <div className="absolute top-12 right-12 w-32 h-32 bg-[var(--yellow)] rounded-full flex items-center justify-center shadow-2xl rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-0">
-                        <div className="text-center text-[var(--text-dark)]">
-                            <p className="text-[9px] font-black opacity-50 tracking-widest">FROM</p>
-                            <p className="text-4xl font-display">৳100</p>
-                        </div>
-                    </div>
-                </div>
-            </Reveal>
-          </div>
-
-          {/* Right Banner - Product Showcase with combine.png */}
-          <div className="md:col-span-2 h-full">
-            <Reveal animation="reveal-right" className="h-full">
                 <div 
                     className="relative overflow-hidden rounded-[2rem] min-h-[500px] flex flex-col justify-between group h-full shadow-[0_30px_80px_rgba(0,0,0,0.05)] border border-gray-100"
                     style={{ backgroundColor: "#fbfaf8" }}
@@ -117,20 +67,31 @@ export default function Banners() {
                     {/* Top Content */}
                     <div className="relative z-10 p-12 pb-0">
                         <span className="inline-block px-5 py-1.5 rounded-full bg-black/5 text-[9px] font-black uppercase tracking-[4px] text-[var(--text-dark)] mb-6 border border-black/5">Our Collection</span>
-                        <h3 className="text-5xl font-display uppercase leading-[0.9] text-[var(--text-dark)] tracking-tighter">
+                        <h3 className="text-6xl font-display uppercase leading-[0.9] text-[var(--text-dark)] tracking-tighter">
                           Born Fresh<br /><span className="text-[var(--primary)]">Served Real</span>
                         </h3>
                     </div>
 
-                    {/* Product Image */}
+                    {/* Product Image Layering */}
                     <div className="relative flex-grow flex items-end justify-center mt-12 px-8 pb-12">
-                        <div className="relative w-full h-[350px] group-hover:scale-[1.05] transition-transform duration-1000 ease-out">
+                        <div className="relative w-full h-[380px] group-hover:scale-[1.02] transition-transform duration-1000 ease-out">
+                          {/* Base Fruit Background */}
                           <Image
                             src={getAssetPath("/assets/bottles/real_photos/fruit_bg.png")}
-                            alt="2Go Fresh Juice Collection"
+                            alt="2Go Fresh Fruit Background"
                             fill
-                            className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                            className="object-contain object-bottom opacity-90"
                           />
+                          
+                          {/* Top Bottles Carousel */}
+                          <div className="absolute inset-0 z-10 scale-[1.1] translate-y-[-10px]">
+                            <Image
+                                src={getAssetPath("/assets/bottles/Bottles Carousel.png")}
+                                alt="2Go Fresh Juice Collection"
+                                fill
+                                className="object-contain object-bottom drop-shadow-[0_25px_50px_rgba(0,0,0,0.15)]"
+                            />
+                          </div>
                         </div>
 
                         {/* Floating Badge */}
@@ -146,6 +107,64 @@ export default function Banners() {
                               <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">No Preservatives</p>
                             </div>
                           </div>
+                        </div>
+                    </div>
+                </div>
+            </Reveal>
+          </div>
+
+          {/* Right Banner - Deal of the Day (Narrow) */}
+          <div className="md:col-span-2 h-full">
+            <Reveal animation="reveal-right" className="h-full">
+                <div 
+                    className="relative overflow-hidden rounded-[2rem] p-12 min-h-[500px] flex flex-col justify-center bg-gradient-to-br from-[var(--secondary)] to-[var(--secondary-dark)] text-white shadow-[0_30px_100px_rgba(36,88,61,0.25)] group h-full"
+                >
+                    {/* Background Graphic */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-white/5 blur-[120px] rounded-full" />
+                    
+                    <div className="relative z-10">
+                        <span className="inline-block px-5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-[9px] font-black uppercase tracking-[4px] mb-8 border border-white/10">Mastermind Deal</span>
+                        <h3 className="text-5xl font-display uppercase mb-12 leading-[0.85] tracking-tighter drop-shadow-lg">
+                        Fresh flavor for<br /><span className="text-[var(--yellow)]">your daily life</span>
+                        </h3>
+                        
+                        {/* Countdown - Smaller for narrow column */}
+                        <div className="flex gap-3 mb-12">
+                        {[
+                            { value: timeLeft.days, label: "Days" },
+                            { value: timeLeft.hours, label: "Hrs" },
+                            { value: timeLeft.minutes, label: "Mins" },
+                            { value: timeLeft.seconds, label: "Secs" },
+                        ].map((item, i) => (
+                            <div key={i} className="text-center">
+                            <div className="bg-white/5 backdrop-blur-xl w-14 h-14 rounded-[1rem] flex items-center justify-center border border-white/10 mb-2 shadow-inner">
+                                <span className="text-2xl font-display text-white">{String(item.value).padStart(2, "0")}</span>
+                            </div>
+                            <p className="text-[7px] font-black uppercase tracking-[2px] opacity-40">{item.label}</p>
+                            </div>
+                        ))}
+                        </div>
+
+                        <div className="flex gap-4">
+                        <a
+                          href="https://wa.me/8801715322138?text=I'm interested in the deal of the day!"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-yellow !rounded-2xl !py-4 !px-8 shadow-xl hover:shadow-[var(--yellow)]/30 text-sm"
+                        >
+                            Grab the Deal
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a>
+                        </div>
+                    </div>
+
+                    {/* Price badge - Smaller */}
+                    <div className="absolute top-8 right-8 w-24 h-24 bg-[var(--yellow)] rounded-full flex items-center justify-center shadow-2xl rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-0">
+                        <div className="text-center text-[var(--text-dark)]">
+                            <p className="text-[8px] font-black opacity-50 tracking-widest">FROM</p>
+                            <p className="text-3xl font-display">৳100</p>
                         </div>
                     </div>
                 </div>
