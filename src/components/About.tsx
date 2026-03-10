@@ -2,6 +2,7 @@
 
 import Reveal from "./Reveal";
 
+
 const values = [
   {
     title: "Plant based",
@@ -40,6 +41,8 @@ export default function About() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] select-none pointer-events-none">
         <span className="text-[400px] font-display uppercase leading-none tracking-tighter">BORN FRESH</span>
       </div>
+
+
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-24 items-center">

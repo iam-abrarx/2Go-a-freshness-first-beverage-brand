@@ -5,167 +5,133 @@ This document provides a comprehensive overview of the **2Go Fresh Beverage Bran
 ## 🗺️ Visual Sitemap
 
 ```mermaid
-graph TD
-    A[Home Page] --> B[Header]
-    A --> C[Hero Slider]
-    A --> D[Category Grid]
-    A --> E[Deals Banner]
-    A --> F[Reviews Section]
-    A --> G[Locations Section]
-    A --> H[Social Embeds]
-    A --> I[Contact & Loyalty]
-    A --> J[Footer]
+graph LR
+    Home["Home Page (Central Hub)"] --> Global["Global Elements"]
+    Home --> Brand["The Brand Experience"]
+    Home --> Interaction["User Interaction"]
 
-    D --> D1[Juice Overlay]
-    D --> D2[Shake Overlay]
-    D --> D3[Coffee Overlay]
+    subgraph Global ["Navigation & Foundation"]
+        Header[Header & Navigation]
+        Footer[Footer & Social Hub]
+    end
 
-    I --> I1[Loyalty Card Generation]
+    subgraph Brand ["The Product Story"]
+        Hero[Hero Slider]
+        Cats[Menu Categories]
+        Deals[Banners & Countdown]
+    end
 
-    B --> B1[WhatsApp CTA]
+    subgraph Interaction ["Social Proof & Loyalty"]
+        Social[Reviews & Stories]
+        Locs[Physical Stores]
+        Contact[Contact & Loyalty]
+    end
+
+    %% Key Relationships
+    Header --> WA[WhatsApp Order]
+    Cats --> Over[Product Overlays]
+    Locs --> Map[Maps Navigation]
+    Contact --> Canvas[Canvas Loyalty Card]
+
+    subgraph "Inactive/Future"
+        AB[About Us]
+        WCU[Why Choose Us]
+    end
 ```
-
-## 📂 Project Structure Tree
-
-```text
-2go-website/
-├── .github/
-│   └── workflows/
-│       └── nextjs.yml          # Automated CI/CD for GH Pages
-├── public/
-│   ├── .nojekyll               # Required for GH Pages skip
-│   └── assets/
-│       ├── logo.png            # Brand Identity
-│       └── bottles/            # Product Renders
-│           └── real_photos/     # High-end photography
-├── src/
-│   ├── app/
-│   │   ├── globals.css         # Design Tokens & Utilities
-│   │   ├── layout.tsx          # Font & Metadata Setup
-│   │   └── page.tsx            # Main Application Assembler
-│   ├── components/
-│   │   ├── About.tsx           # Brand Story & Stats
-│   │   ├── Banners.tsx         # Deals & Countdown Logic
-│   │   ├── Categories.tsx      # Interactive Menu & Overlays
-│   │   ├── Contact.tsx         # Form & Loyalty Card Logic
-│   │   ├── Footer.tsx          # Bottom Brand Presence
-│   │   ├── Header.tsx          # Dynamic Nav & WhatsApp CTA
-│   │   ├── Hero.tsx            # High-Impact Swiper Slider
-│   │   ├── Locations.tsx       # Store Map Presence
-│   │   ├── Reveal.tsx          # Scroll Animator Hook
-│   │   ├── Reviews.tsx         # Customer Trust Block
-│   │   ├── SocialEmbeds.tsx    # Live Feed Connections
-│   │   └── WhyChooseUs.tsx     # Value Proposition Grid
-│   ├── data/
-│   │   ├── content.ts          # Static Site Text
-│   │   └── products.ts         # Menu & Image Database
-│   └── lib/
-│       └── utils.ts            # GH Pages Path Normalizer
-├── next.config.ts              # Output & BasePath Settings
-├── package.json                # Dependencies & Scripts
-└── tsconfig.json               # Type definitions
-```
-
----
 
 ## 🏗️ Sitemap & Architecture
 
-The website is designed as a high-conversion **Single Page Application (SPA)** built with Next.js.
+The website is a **Single Page Application (SPA)** built with Next.js, optimized for high-conversion and visual storytelling.
 
-### 1. **Header** (Global Navigation)
+### 1. **Header** (Global Controller)
 
-- Dynamic styling (transparency to solid white on scroll).
-- WhatsApp Quick CTA for instant ordering.
+- **Dynamic Transition**: Shifts from transparent to solid white with a glassmorphism shadow on scroll.
+- **CTAs**: Integrated WhatsApp and Direct Call buttons for frictionless ordering.
+- **Navigation**: "Smart" links using anchor tags for smooth intra-page transitions.
 
-### 2. **Hero Section** (Brand Identity)
+### 2. **Hero Section** (Brand First Impression)
 
-- High-impact slider using Swiper.js.
-- Animated floating bottle assets.
-- Clear value proposition: "Born Fresh. Served Real."
+- **Dynamic Slider**: Powered by Swiper.js, featuring parallax-style floating fruit/bottle assets.
+- **Visual Hooks**: Premium typography (Urbanist) with high-contrast positioning.
 
-### 3. **Categories** (The Menu Explorer)
+### 3. **Categories** (Menu Engine)
 
-- Interactive grid with backdrop-blur effects.
-- **Functionality**:
-  - Dynamic filtering of products based on selected category.
-  - Overlay mode with scroll-lock and escape-key handling.
-  - Detailed product view upon clicking a category item.
+- **Interactive Grid**: Uses CSS `backdrop-blur-2xl` for a high-end feel.
+- **Logic**:
+  - Client-side filtering of products (Juices, Shakes, Coffee).
+  - Scroll-locked overlays for detailed product specs (ingredients, price, special notes).
+  - Esc-key and click-outside triggers for intuitive UX.
 
-### 4. **Banners** (Conversion & Urgency)
+### 4. **Banners** (Conversion Utility)
 
-- "Mastermind Deal" featuring a **real-time countdown timer**.
-- Glassmorphism design with deep shadows for a premium physical feel.
+- **Mastermind Deal**: Features a real-time JS countdown timer (`setInterval` based) to create urgency.
+- **Micro-interactions**: Subtle hover scaling and glassmorphism depth.
 
-### 5. **Reviews** (Social Proof)
+### 5. **Reviews & Social Proof**
 
-- Text reviews from regular customers.
-- **Video Reviews**: Simulated video thumbnails with animated waveform decorations for trust and engagement.
+- **Dynamic Grid**: Randomized accent colors for each review card.
+- **Video Elements**: Simulated video players using HTML/CSS wave-animations to build authenticity without heavy video loads.
 
-### 6. **Locations** (Store Presence)
+### 6. **Locations** (Physical Presence)
 
-- Visual cards for Dhaka-based stores (Bailey Road, Rater Kabab).
-- Integrated Google Maps navigation CTAs.
+- **Visual Wayfinding**: High-resolution imagery of physical store fronts.
+- **Direct Navigation**: Deep-linking to Google Maps coordinates.
 
-### 7. **Social Embeds** (Journey)
+### 7. **Social & Contact Hub**
 
-- Facebook and Instagram feeds/linkouts to build community connection.
+- **Social Embeds**: Clean grid of social media entry points.
+- **Contact System**: Validation-ready form feeding into the Loyalty card logic.
 
-### 8. **Contact & Loyalty** (Retention)
+### 8. **Loyalty System** (Retention Engine)
 
-- Personalized form for user inquiries.
-- **Loyalty System**: Generates a **customized 2Go Loyalty Card** via HTML5 Canvas upon form submission, providing users with a downloadable asset for discounts.
-
-### 9. **Footer** (Legal & Secondary Navigation)
-
-- Links to policies, social handles, and newsletter signup.
+- **Personalized Logic**: Upon form submission, the site generates a high-definition (2x scale) membership card.
+- **Engine**: Uses HTML5 Canvas API to render custom user data onto an image template for instant download.
 
 ---
 
 ## 🚶 User Journey
 
-### Phase 1: Awareness (The Landing)
+### Phase 1: High-Impact Entrance (Home)
 
-The user enters via the **Hero Section**. Vibrantly colored background blobs and floating fruit bottles immediately communicate "Freshness" and "Premium Quality."
+The user is greeted by the **Hero Slider**. Floating fruit bottles and large geometric splashes communicate "Fresheness" and "Premium Craftsmanship" within 2 seconds of page load.
 
-### Phase 2: Exploration (The Menu)
+### Phase 2: Menu Discovery (Categories)
 
-The user scrolls to **Categories**. They interact with the menu by filtering through juices, shakes, and coffee. Each click opens a refined overlay that showcases specific ingredients and price points.
+The user scrolls to **Categories**. The interaction allows them to filter products instantly. Clicking a bottle triggers a sleek overlay, revealing the "Real Fruit" ingredients and special health notes, moving them from curiosity to intent.
 
-### Phase 3: Validation (Social Proof)
+### Phase 3: Validation & Urgency (Reviews & Banners)
 
-The user sees the **Reviews** and **Video Stories**. This builds trust that the "No Preservatives" claim is verified by the community.
+The user sees the **Reviews** (building trust) and then the **Mastermind Deal** with its ticking clock. The combination of social proof and scarcity (time-limited deal) drives the decision to order.
 
-### Phase 4: Decision (Urgency)
+### Phase 4: Seamless Conversion (WhatsApp/Call)
 
-The **Banners** section presents a timed deal. The ticking clock encourages the user to act now.
+The user clicks the **WhatsApp CTA** found in the Header or Banner. This bypasses a complex cart system for a direct, personalized chat-to-order experience, which is culturally preferred in the target market.
 
-### Phase 5: Conversion (The Order)
+### Phase 5: Enrollment (Contact/Loyalty)
 
-The user clicks the **WhatsApp CTA** (available in the Header, Banner, and Locations) to start a direct chat with the 2Go team for delivery.
+Post-order, the user fills out the contact form to stay "Fresh." The instant generation of a **Personalized Loyalty Card** serves as a digital "gift," increasing the likelihood of return visits to physical stores.
 
-### Phase 6: Retention (The Loyalty Card)
-
-The user submits a contact form and is "wowed" by the instant generation of a **Personalized Loyalty Card**, encouraging them to visit physical stores.
+---
 
 ---
 
 ## ⚙️ Core Functionality & Logic
 
-### **1. Asset Path Normalization**
+### **1. Seamless Asset Delivery**
 
-To handle GitHub Pages subfolder hosting, all assets pass through `src/lib/utils.ts`.
+The website uses an intelligent asset management system that ensures all high-resolution brand imagery loads perfectly regardless of where the site is hosted. This provides a consistent experience for users worldwide, maintaining the brand's premium look and feel.
 
-- **Logic**: Prefixes internal paths with `/2Go-a-freshness-first-beverage-brand` while ignoring external URLs.
+### **2. Personalized Loyalty Engine**
 
-### **2. Loyalty Card Generation**
+A key feature is the instant generation of loyalty cards. When a user joins the family through our contact portal, the system automatically crafts a personalized digital membership card. This "instant reward" serves as a digital gift, encouraging repeat visits and building a community of "Fresh" enthusiasts.
 
-- **File**: `src/components/Contact.tsx`
-- **Method**: Uses the `CanvasRenderingContext2D` to draw a high-resolution (retina-ready) card with the user's name, email, and a unique member ID.
+### **3. Immersive Interactive Flow**
 
-### **3. Intersection Observer Reveal**
+The site is designed to feel alive. As the user scrolls, components react with fluid animations (revealing, sliding, and scaling). This isn't just for show; it guides the user's focus through the brand story and ensures the discovery process feels premium and engaging.
 
-- **File**: `src/components/Reveal.tsx`
-- **Logic**: Detects when a section enters the viewport and applies CSS classes for stagger, slide-left, or slide-right animations.
+### **4. Real-time Offer System**
+
+To keep the menu exciting, certain premium deals feature live countdowns. This creates a dynamic sense of urgency for special limited-time offerings, keeping the user journey focused on immediate value and freshness.
 
 ---
 
@@ -173,21 +139,20 @@ To handle GitHub Pages subfolder hosting, all assets pass through `src/lib/utils
 
 ### **Colors**
 
-| Token         | HEX       | Role                           |
-| :------------ | :-------- | :----------------------------- |
-| **Primary**   | `#d64c4c` | Signature Red (Energy, Fruit)  |
-| **Secondary** | `#307351` | Forest Green (Natural, Health) |
-| **Yellow**    | `#F3CA40` | Honey Yellow (Zest, Deals)     |
-| **Dark**      | `#1a1a1a` | Premium Contrast               |
+| Token         | HEX       |                         Preview                          | Role                           |
+| :------------ | :-------- | :------------------------------------------------------: | :----------------------------- |
+| **Primary**   | `#d64c4c` | <span style="color: #d64c4c; font-size: 1.5em;">■</span> | Signature Red (Energy, Fruit)  |
+| **Secondary** | `#307351` | <span style="color: #307351; font-size: 1.5em;">■</span> | Forest Green (Natural, Health) |
+| **Yellow**    | `#F3CA40` | <span style="color: #F3CA40; font-size: 1.5em;">■</span> | Honey Yellow (Zest, Deals)     |
+| **Dark**      | `#1a1a1a` | <span style="color: #1a1a1a; font-size: 1.5em;">■</span> | Premium Contrast (Luxury)      |
 
 ### **Typography**
 
-- **Display**: `Urbanist` (800-900 Weight) - Geometric, high-end, modern.
-- **Body**: `Urbanist` (400-600 Weight) - Highly legible even at small sizes.
-- **Localization**: `Noto Sans Bengali` - Ensures seamless reading for the Dhaka audience.
+- **Urbanist**: Used for all weights (300-900). Geometric sans-serif that reflects cleanliness and modern beverage branding.
+- **Noto Sans Bengali**: Paired perfectly for local language support without sacrificing the clean aesthetic.
 
-### **Aesthetic Pillars**
+### **Visual Pillars**
 
-- **Glassmorphism**: Using `backdrop-blur-2xl` and tinted white/black overlays for depth.
-- **Micro-Animations**: Pulse effects on badges, floating animations on product bottles, and rotating shadows on hover items.
-- **Depth**: Utilizing `shadow-inner` and layered shadows to make UI elements feel like physical physical cards.
+- **Glassmorphism**: Heavy use of `backdrop-blur` and semi-transparent white overlays to create layers of depth.
+- **Organic Depth**: Utilizing `shadow-inner` and multi-layered drop shadows to make digital cards feel like physical objects.
+- **Micro-Animations**: Hover-triggered rotations, pulse effects, and stagger-loaded grids.

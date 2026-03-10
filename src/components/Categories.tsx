@@ -51,10 +51,10 @@ export default function Categories() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
-  // Reset selected product when category changes
-  useEffect(() => {
-    setSelectedProduct(null);
-  }, [selectedCat]);
+  // Reset selected product when category changes - REMOVED to keep detail view open
+  // useEffect(() => {
+  //   setSelectedProduct(null);
+  // }, [selectedCat]);
 
   // Prevent scroll when overlay is open
   useEffect(() => {
@@ -72,6 +72,11 @@ export default function Categories() {
     <section id="categories" className="py-32 bg-white overflow-hidden relative">
       {/* Decorative Blob */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-[100px] -ml-40 -mt-20" />
+      
+      {/* Decorative Leaf */}
+      <Reveal animation="reveal-leaf" className="absolute top-28 left-4 w-72 h-72 -rotate-345 pointer-events-none select-none z-0">
+         <Image src={getAssetPath("/assets/leaf.png")} alt="" fill className="object-contain" />
+      </Reveal>
 
       <div className="container relative z-10">
         <Reveal>
@@ -149,32 +154,59 @@ export default function Categories() {
 
       {/* Product List Overlay - Updated for Left Alignment and Master-Detail */}
       {selectedCat && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-start p-4 sm:p-8 animate-in fade-in duration-500">
+        <div className="fixed inset-0 z-[600] flex items-center justify-start p-4 sm:p-8 md:pt-12 animate-in fade-in duration-500">
           <div 
             className="absolute inset-0 bg-[var(--text-dark)]/80 backdrop-blur-md cursor-pointer"
             onClick={() => { setSelectedCat(null); setSelectedProduct(null); }}
           />
           
-          <div className={`relative h-full bg-white rounded-2xl shadow-2xl flex overflow-hidden transition-all duration-700 ease-out animate-in slide-in-from-left ${selectedProduct ? 'w-full max-w-6xl' : 'w-full max-w-2xl'}`}>
+          <div 
+            className={`relative h-full bg-white rounded-2xl shadow-2xl flex overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] animate-in slide-in-from-left ${
+              selectedProduct ? 'w-full max-w-[calc(100vw-64px)]' : 'w-full max-w-[520px]'
+            }`}
+          >
             
             {/* Master: Product List (Left Pane) */}
-            <div className={`flex flex-col h-full bg-white transition-all duration-700 border-r border-gray-50 ${selectedProduct ? 'w-[400px] shrink-0' : 'w-full'}`}>
+            <div className={`flex flex-col h-full bg-white transition-all duration-700 border-r border-gray-50 shrink-0 w-[520px]`}>
                 {/* Overlay Header */}
-                <div className="p-10 pb-6 flex items-center justify-between">
-                    <div>
-                        <span className="text-[var(--primary)] font-black uppercase tracking-[5px] text-[10px]">Collection</span>
-                        <h2 className="text-4xl font-display uppercase mt-2">{currentCategory?.name}</h2>
-                    </div>
-                    {!selectedProduct && (
+                <div className="p-8 pb-4">
+                    <div className="flex items-center justify-between mb-8">
+                        <div>
+                            <span className="text-[var(--primary)] font-black uppercase tracking-[5px] text-[10px]">Collection</span>
+                            <h2 className="text-4xl font-display uppercase mt-2">{currentCategory?.name}</h2>
+                        </div>
                         <button 
                             onClick={() => setSelectedCat(null)}
-                            className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all duration-500 group"
+                            className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all duration-500 group"
                         >
-                            <svg className="w-5 h-5 transform group-hover:rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 transform group-hover:rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                    )}
+                    </div>
+
+                    {/* Category Switcher Tabs */}
+                    <div className="flex gap-2 p-1 bg-gray-50 rounded-xl border border-gray-100 mb-2">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat.id}
+                                onClick={() => {
+                                    setSelectedCat(cat.id);
+                                    if (selectedProduct) {
+                                        const firstInNew = products.find(p => p.category === cat.id);
+                                        if (firstInNew) setSelectedProduct(firstInNew);
+                                    }
+                                }}
+                                className={`flex-1 py-3 px-4 rounded-lg text-[9px] font-black uppercase tracking-[2px] transition-all duration-500 ${
+                                    selectedCat === cat.id 
+                                        ? "bg-white text-[var(--primary)] shadow-sm scale-[1.02]" 
+                                        : "text-gray-400 hover:text-[var(--text-dark)] hover:bg-white/50"
+                                }`}
+                            >
+                                {cat.name}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Product List */}

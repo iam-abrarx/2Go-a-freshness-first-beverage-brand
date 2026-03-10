@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, ReactNode } from "react";
 interface RevealProps {
   children: ReactNode;
   className?: string;
-  animation?: "reveal" | "reveal-left" | "reveal-right" | "reveal-stagger";
+  animation?: "reveal" | "reveal-up" | "reveal-left" | "reveal-right" | "reveal-stagger" | "reveal-leaf";
 }
 
 export default function Reveal({ children, className = "", animation = "reveal" }: RevealProps) {
@@ -22,6 +22,7 @@ export default function Reveal({ children, className = "", animation = "reveal" 
       },
       {
         threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
       }
     );
 

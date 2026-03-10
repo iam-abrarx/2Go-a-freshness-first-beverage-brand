@@ -149,6 +149,10 @@ h6 {
   padding: 0 24px;
 }
 
+section[id] {
+  scroll-margin-top: 100px;
+}
+
 .section-title {
   margin-bottom: 64px;
 }
@@ -174,7 +178,8 @@ h6 {
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .reveal.active {
@@ -182,10 +187,23 @@ h6 {
   transform: translateY(0);
 }
 
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .reveal-left {
   opacity: 0;
-  transform: translateX(-60px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-50px);
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .reveal-left.active {
@@ -195,8 +213,9 @@ h6 {
 
 .reveal-right {
   opacity: 0;
-  transform: translateX(60px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(50px);
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .reveal-right.active {
@@ -207,7 +226,8 @@ h6 {
 .reveal-stagger > * {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .reveal-stagger.active > * {
@@ -279,3 +299,49 @@ h6 {
     font-size: 36px;
   }
 }
+
+.reveal-leaf {
+  opacity: 0;
+  transform: translateY(80px) rotate(-10deg);
+  transition: all 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-leaf.active {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+
+/* 2Go Animation Utilities */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Parallax and Background Animation */
+@keyframes fade-in-slow {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fade-in-slow {
+  animation: fade-in-slow 1.5s ease-out forwards;
+}
+
+/* Plant Sway Animation */
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { 
+    transform: rotate(calc(var(--sway-intensity, 1) * 0.8deg)) skewX(calc(var(--sway-intensity, 1) * 1.2deg)); 
+  }
+}
+
+.animate-sway {
+  animation: sway 7s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+

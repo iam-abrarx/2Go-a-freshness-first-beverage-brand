@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Urbanist, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -25,9 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${urbanist.variable} ${notoBengali.variable} font-body overflow-x-hidden`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${urbanist.variable} ${notoBengali.variable} font-body overflow-x-hidden`} suppressHydrationWarning>
+        <LoadingScreen />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
