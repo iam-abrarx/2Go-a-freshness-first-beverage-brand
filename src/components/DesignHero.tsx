@@ -49,7 +49,7 @@ const manualLayers = [
     x: -100,
     y: -45,
     scrollFactor: 0.04, // Moves UP as you scroll down
-    opacity: 0.8,
+    opacity: 1.0,
     parallax: 3,
     animation: {
       type: 'slide-up',
@@ -313,7 +313,7 @@ export default function DesignHero() {
       className="relative h-screen flex items-center justify-center overflow-hidden bg-[#ebefd7]"
       style={{ contain: 'paint' }}
     >
-      {/* Preload SVG Masks to prevent FOUC mask flicker */}
+      {/* Preload SVG Masks */}
       <div className="hidden" aria-hidden="true">
         {manualLayers.map((layer) => (
           <Image key={`preload-${layer.id}`} src={getAssetPath(layer.src)} alt="" width={10} height={10} priority />
@@ -391,17 +391,13 @@ export default function DesignHero() {
           })}
       </div>
 
-      {/* Central Content Removed as per request */}
+      {/* Central Content */}
       <div className="relative z-30 w-full max-w-5xl mx-auto px-6 mt-20 md:mt-32 group">
         <Swiper
-          modules={[Autoplay, Pagination, EffectFade, Navigation]}
+          modules={[Autoplay, Pagination, EffectFade]}
           effect="fade"
           fadeEffect={{ crossFade: true }}
           speed={1000}
-          navigation={{
-            nextEl: '.swiper-button-next-custom',
-            prevEl: '.swiper-button-prev-custom',
-          }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           pagination={{ 
             clickable: true, 
@@ -414,13 +410,13 @@ export default function DesignHero() {
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id} className="pt-8">
               <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 md:p-16 rounded-3xl">
-                <span className="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-[#d64c4c] mb-4 md:mb-6 block">
+                <span className="text-xl md:text-2xl font-cursive text-[#d64c4c] mb-4 md:mb-6 block">
                   {slide.subtitle}
                 </span>
                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#1a3826] tracking-tighter mb-6 md:mb-8 leading-[0.9]">
                   {slide.text}
                 </h2>
-                <p className="max-w-2xl mx-auto text-base md:text-xl text-[#3b5947] font-medium leading-relaxed mb-8 md:mb-10">
+                <p className="max-w-2xl mx-auto text-3xl md:text-4xl text-[#3b5947] font-oooh-baby leading-relaxed mb-8 md:mb-10">
                   {slide.desc}
                 </p>
               </div>
@@ -428,26 +424,6 @@ export default function DesignHero() {
           ))}
         </Swiper>
         
-        {/* Custom Navigation Buttons */}
-        <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-40 w-12 h-12 flex items-center justify-center bg-[#d64c4c] text-white rounded-full shadow-[0_4px_12px_rgba(214,76,76,0.3)] hover:bg-[#b13a3a] hover:scale-110 transition-all duration-300 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:-translate-x-0 disabled:opacity-50 disabled:cursor-not-allowed">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/>
-          </svg>
-        </button>
-        <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-40 w-12 h-12 flex items-center justify-center bg-[#d64c4c] text-white rounded-full shadow-[0_4px_12px_rgba(214,76,76,0.3)] hover:bg-[#b13a3a] hover:scale-110 transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 disabled:opacity-50 disabled:cursor-not-allowed">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.59 6L9.17 7.41 13.76 12l-4.59 4.59L10.59 18l6-6-6-6z"/>
-          </svg>
-        </button>
-
-        <div className="flex gap-4 items-center justify-center mt-2 relative z-40">
-          <button className="px-8 py-3.5 bg-[#d64c4c] text-white rounded-full font-semibold tracking-wide hover:bg-[#b13a3a] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-            Explore Our Range
-          </button>
-          <button className="px-8 py-3.5 bg-white/50 text-[#1a3826] rounded-full font-semibold tracking-wide border border-[#1a3826]/10 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm">
-            Learn More
-          </button>
-        </div>
         <style jsx global>{`
           .swiper-pagination-bullet-active {
             width: 32px !important;
@@ -460,9 +436,6 @@ export default function DesignHero() {
         `}</style>
       </div>
       
-      {/* Soft Overlays - Lowered z-index to stay behind content */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#ebefd7]/10 via-transparent to-[#ebefd7]/10 z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#ebefd7_100%)] opacity-30 z-10 pointer-events-none" />
     </section>
   );
 }

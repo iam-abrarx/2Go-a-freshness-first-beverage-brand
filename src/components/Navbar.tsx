@@ -78,10 +78,10 @@ export default function Navbar() {
       <div 
         className={`flex items-center justify-between w-full transition-all duration-700 ease-in-out px-8 md:px-16 py-4 ${
           isBeyondSection2 
-            ? "bg-[#4a5b2e] shadow-2xl" 
+            ? "bg-[var(--primary)] shadow-2xl" 
             : isScrolled
-            ? "bg-white/90 backdrop-blur-xl shadow-md"
-            : "bg-transparent"
+            ? "bg-[#4a5b2e] shadow-md"
+            : "bg-[#4a5b2e]"
         } ${isScrolled ? "py-3" : "py-6"}`}
       >
         {/* Logo */}
@@ -94,15 +94,13 @@ export default function Navbar() {
               className="object-contain"
             />
           </div>
-          <span className={`text-xl font-display font-black tracking-tighter transition-colors duration-500 ${isBeyondSection2 ? "text-white" : "text-[var(--text-dark)]"}`}>
+          <span className={`text-xl font-display font-black tracking-tighter transition-colors duration-500 text-white`}>
             2GO
           </span>
         </Link>
 
         {/* Desktop Links */}
-        <div className={`hidden md:flex items-center gap-2 px-2 py-1.5 rounded-2xl transition-all duration-500 ${
-            isBeyondSection2 ? "bg-white/10" : "bg-black/5"
-        }`}>
+        <div className={`hidden md:flex items-center gap-2 px-2 py-1.5 rounded-2xl transition-all duration-500 bg-white/10`}>
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -110,8 +108,10 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, link.href)}
               className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[2px] transition-all duration-500 ${
                 activeSection === link.href.substring(1)
-                  ? (isBeyondSection2 ? "bg-white text-[#4a5b2e] shadow-lg scale-105" : "bg-white text-[var(--primary)] shadow-md scale-105")
-                  : (isBeyondSection2 ? "text-white/60 hover:text-white" : "text-gray-500 hover:text-[var(--text-dark)]")
+                  ? (link.name === "Menu" ? "text-[#307351] scale-105 bg-white/10" : "bg-white text-[#4a5b2e] shadow-lg scale-105")
+                  : link.name === "Menu"
+                  ? "text-[#307351] hover:scale-105 font-extrabold"
+                  : "text-white/60 hover:text-white"
               }`}
             >
               {link.name}
@@ -125,7 +125,7 @@ export default function Navbar() {
             href="#contact" 
             onClick={(e) => scrollToSection(e, "#contact")}
             className={`btn-primary !py-3 !px-8 !text-[10px] !rounded-xl shadow-xl transition-all duration-500 ${
-                isBeyondSection2 ? "!bg-[var(--yellow)] !text-[var(--text-dark)]" : ""
+                isBeyondSection2 ? "!bg-[var(--yellow)] !text-[var(--text-dark)]" : "!bg-white !text-[var(--secondary)]"
             }`}
            >
             Order Now
@@ -137,9 +137,9 @@ export default function Navbar() {
           className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-50 overflow-hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <span className={`w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""} ${isBeyondSection2 ? "bg-white" : "bg-[var(--text-dark)]"}`} />
-          <span className={`w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? "opacity-0 -translate-x-full" : ""} ${isBeyondSection2 ? "bg-white" : "bg-[var(--text-dark)]"}`} />
-          <span className={`w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""} ${isBeyondSection2 ? "bg-white" : "bg-[var(--text-dark)]"}`} />
+          <span className={`w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""} bg-white`} />
+          <span className={`w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? "opacity-0 -translate-x-full" : ""} bg-white`} />
+          <span className={`w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""} bg-white`} />
         </button>
       </div>
 
@@ -161,8 +161,10 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, link.href)}
               className={`text-4xl font-display uppercase tracking-tighter transition-all duration-500 ${
                 activeSection === link.href.substring(1) 
-                  ? (isBeyondSection2 ? "text-[var(--yellow)] scale-110" : "text-[var(--primary)] scale-110") 
-                  : (isBeyondSection2 ? "text-white/40 hover:text-white" : "text-gray-300 hover:text-[var(--text-dark)]")
+                  ? (link.name === "Menu" ? "text-[#307351] scale-110" : "text-white scale-110")
+                  : link.name === "Menu"
+                  ? "text-[#307351] hover:scale-105"
+                  : "text-white/40 hover:text-white"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >

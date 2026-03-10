@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+.font-oooh-baby {
+  font-family: var(--font-oooh-baby), cursive;
+}
+
+.font-cursive {
+  font-family: var(--font-cursive), cursive;
+}
+
 :root {
   /* 2Go Vibrant Palette */
   --primary: #d64c4c;        /* Signature Red */
@@ -340,8 +348,44 @@ section[id] {
   }
 }
 
+@keyframes reveal-text {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes loading-bar {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.15; transform: scale(1.05); }
+}
+
+.animate-reveal-text {
+  animation: reveal-text 1.2s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+
+.animate-loading-bar {
+  animation: loading-bar 2.8s cubic-bezier(0.1, 0, 0.1, 1) forwards;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 3s ease-in-out infinite;
+}
+
 .animate-sway {
   animation: sway 7s ease-in-out infinite;
   transform-origin: bottom center;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
 }
 

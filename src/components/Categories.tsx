@@ -70,8 +70,6 @@ export default function Categories() {
 
   return (
     <section id="categories" className="py-32 bg-white overflow-hidden relative">
-      {/* Decorative Blob */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-[100px] -ml-40 -mt-20" />
       
       {/* Decorative Leaf */}
       <Reveal animation="reveal-leaf" className="absolute top-28 left-4 w-72 h-72 -rotate-345 pointer-events-none select-none z-0">
