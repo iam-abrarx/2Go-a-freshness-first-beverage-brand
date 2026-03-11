@@ -1,4 +1,4 @@
-import DesignHero from "@/components/DesignHero";
+import OldHero from "@/components/OldHero";
 import Navbar from "@/components/Navbar";
 import MissionQuote from "@/components/MissionQuote";
 import Categories from "@/components/Categories";
@@ -10,11 +10,11 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LogoSlider from "@/components/LogoSlider";
 
-export default function Home() {
+export default function HeroDemoPage() {
   return (
-    <main className="transition-all duration-500">
+    <main className="transition-all duration-500 min-h-screen">
       <Navbar />
-      <DesignHero />
+      <OldHero />
       <MissionQuote />
       <Categories />
       <Stories />

@@ -13,21 +13,21 @@ import 'swiper/css/navigation';
 const heroSlides = [
   { 
     id: 1, 
-    subtitle: "EST. 2024",
-    text: "A Freshness First", 
-    desc: "Experience the ultimate refreshing taste with zero compromises on quality, directly sourced from nature."
+    subtitle: "Born Fresh, Served Real",
+    text: "Juice for all\noccasions.", 
+    desc: "Experience the purest taste of nature with our freshly pressed juices made from seasonal fruits in Dhaka."
   },
   { 
     id: 2, 
-    subtitle: "CRAFTED WITH CARE",
-    text: "Premium Quality", 
-    desc: "Every drop is carefully curated to give you an authentic and rejuvenating experience."
+    subtitle: "Born Fresh, Served Real",
+    text: "Real Fruits.\nReal Taste.", 
+    desc: "We believe in keeping it real. No artificial colors, no preservatives, just pure fruit goodness delivered fresh."
   },
   { 
     id: 3, 
-    subtitle: "FOR THE PLANET",
-    text: "Sustainably Sourced", 
-    desc: "Our commitment revolves around eco-friendly practices that protect tomorrow."
+    subtitle: "Born Fresh, Served Real",
+    text: "Start Fresh\nEvery Day.", 
+    desc: "Fuel your day with natural energy from our range of masterclass fresh juices and healthy beverages."
   },
 ];
 
@@ -39,13 +39,14 @@ const manualLayers = [
     src: "/assets/composition/1-03.svg",
     color: "#ced4b1",
     brightness: 1.0,
+    blur: 2,
     hidden: false,
     top: "auto",
     bottom: "0vh",
     left: "5vw",
     right: "auto",
     rotate: 35,
-    scale: 3,
+    scale: 2,
     x: -100,
     y: -45,
     scrollFactor: 0.04, // Moves UP as you scroll down
@@ -64,13 +65,14 @@ const manualLayers = [
     src: "/assets/composition/1-03.svg",
     color: "#ced4b1",
     brightness: 0.9,
+    blur: 2,
     hidden: false,
     top: "auto",
     bottom: "0vh",
     left: "15vw",
     right: "auto",
     rotate: 65,
-    scale: 2.5,
+    scale: 1.5,
     x: 155,
     y: 140,
     opacity: 1.0,
@@ -88,14 +90,15 @@ const manualLayers = [
     id: "1-01-bottom-left-flipped",
     src: "/assets/composition/1-01.svg",
     flipX: true,
+    blur: 1,
     hidden: false,
     top: "auto",
     bottom: "-18vh",
     left: "30vw",
     right: "auto",
     rotate: 10,
-    scale: 1.85,
-    x: -100,
+    scale: 0.85,
+    x: -80 ,
     y: 0,
     opacity: 1,
     scrollFactor: 0.02, // Moves UP as you scroll down
@@ -114,14 +117,15 @@ const manualLayers = [
     src: "/assets/composition/1-02.svg",
     color: "#ced4b1",
     brightness: 1,
+    blur: 0.2,
     hidden: false,
     top: "auto",
     bottom: "-30vh",
     left: "10vw",
     right: "auto",
     rotate: 50,
-    scale: 6,
-    x: 0,
+    scale: 5,
+    x: -20,
     y: 0,
     opacity: 1,
     scrollFactor: 0.02, // Moves UP as you scroll down
@@ -139,15 +143,16 @@ const manualLayers = [
     src: "/assets/composition/1-02.svg",
     color: "#bdc690",
     brightness: 1.0,
+    blur: 1,
     hidden: false,
     top: "auto",
     bottom: "-32vh",
     left: "15vw",
     right: "auto",
     rotate: 60,
-    scale: 2.50,
-    x: 180,
-    y: 0,
+    scale: 1.50,
+    x: 150,
+    y: -10,
     opacity: 1,
     // scrollFactor: -0.03, // Moves UP as you scroll down
     parallax: 6,
@@ -158,16 +163,92 @@ const manualLayers = [
     }
   },
   {
+    nr: 9,
+    id: "bottle-watermelon",
+    src: "/assets/bottles/Watermelon Bottle.png",
+    isImage: true,
+    blur: 0,
+    hidden: false,
+    top: "auto",
+    bottom: "-10vh",
+    left: "5vw",
+    right: "auto",
+    rotate: 0,
+    scale: 1.5,
+    x: 150,
+    y: -90,
+    opacity: 1,
+    parallax: 0,
+    scrollFactor: 0.1,
+    animation: {
+      type: 'slide-up',
+      duration: '1.8s',
+      delay: '0.4s',
+      ease: 'cubic-bezier(0.26, .58, 0.3, 1)'
+    }
+  },
+  {
+    nr: 8,
+    id: "bottle-papaya",
+    src: "/assets/bottles/Papaya Bottle.png",
+    isImage: true,
+    blur: 0,
+    hidden: false,
+    top: "auto",
+    bottom: "-10vh",
+    left: "5vw",
+    right: "auto",
+    rotate: 0,
+    scale: 1.2,
+    x: -10,
+    y: -40,
+    opacity: 1,
+    parallax: 0,
+    scrollFactor: 0.102,
+    animation: {
+      type: 'slide-up',
+      duration: '2.0s',
+      delay: '0.6s',
+      ease: 'cubic-bezier(0.26, .58, 0.3, 1)'
+    }
+  },
+  {
+    nr: 8,
+    id: "bottle-fruit-fizz",
+    src: "/assets/bottles/fruit-fizz.png",
+    isImage: true,
+    blur: 0,
+    hidden: false,
+    top: "auto",
+    bottom: "-10vh",
+    left: "5vw",
+    right: "auto",
+    rotate: 0,
+    scale: 1.20,
+    x: 325,
+    y: -20,
+    opacity: 1,
+    parallax: 0,
+    scrollFactor: 0.125,
+    animation: {
+      type: 'slide-up',
+      duration: '1.6s',
+      delay: '0.8s',
+      ease: 'cubic-bezier(0.26, .58, 0.3, 1)'
+    }
+  },
+  {
     nr: 8,
     id: "1-01-bottom-left",
     src: "/assets/composition/1-01.svg",
+    blur: 0,
     hidden: false,
     top: "auto",
     bottom: "-20vh",
     left: "25vw",
     right: "auto",
     rotate: 35,
-    scale: 4.0,
+    scale: 3.0,
     x: -600,
     y: 20,
     opacity: 1,
@@ -187,13 +268,14 @@ const manualLayers = [
     src: "/assets/composition/1-02.svg",
     color: "#bdc690",
     brightness: 1.0,
+    blur: 2,
     hidden: false,
     top: "auto",
     bottom: "-35vh",
     left: "25vw",
     right: "auto",
     rotate: 65,
-    scale: 3.8,
+    scale: 2.8,
     x: -440,
     y: 0,
     opacity: 1,
@@ -310,7 +392,7 @@ export default function DesignHero() {
     <section 
       id="design-hero"
       ref={sectionRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden bg-[#ebefd7]"
+      className="relative h-[95vh] flex items-end justify-center overflow-hidden bg-[#f8f4e9]"
       style={{ contain: 'paint' }}
     >
       {/* Preload SVG Masks */}
@@ -352,9 +434,10 @@ export default function DesignHero() {
                   willChange: 'transform, opacity',
                   backfaceVisibility: 'hidden',
                   WebkitBackfaceVisibility: 'hidden',
+                  filter: (layer as any).blur ? `blur(${(layer as any).blur}px)` : undefined,
                 }}
               >
-                <div 
+                <div  
                   className="relative w-[500px] h-[500px]"
                   style={{ 
                     transformOrigin: 'bottom center',
@@ -392,43 +475,66 @@ export default function DesignHero() {
       </div>
 
       {/* Central Content */}
-      <div className="relative z-30 w-full max-w-5xl mx-auto px-6 mt-20 md:mt-32 group">
-        <Swiper
-          modules={[Autoplay, Pagination, EffectFade]}
-          effect="fade"
-          fadeEffect={{ crossFade: true }}
-          speed={1000}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          pagination={{ 
-            clickable: true, 
-            renderBullet: (index, className) => {
-              return `<span class="${className} w-3 h-3 bg-[#d64c4c]/50 opacity-100 transition-all hover:bg-[#d64c4c]"></span>`;
-            }
-          }}
-          className="w-full min-h-[400px] md:min-h-[500px] rounded-3xl overflow-visible pb-12"
-        >
-          {heroSlides.map((slide) => (
-            <SwiperSlide key={slide.id} className="pt-8">
-              <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 md:p-16 rounded-3xl">
-                <span className="text-xl md:text-2xl font-cursive text-[#d64c4c] mb-4 md:mb-6 block">
-                  {slide.subtitle}
-                </span>
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#1a3826] tracking-tighter mb-6 md:mb-8 leading-[0.9]">
-                  {slide.text}
-                </h2>
-                <p className="max-w-2xl mx-auto text-3xl md:text-4xl text-[#3b5947] font-oooh-baby leading-relaxed mb-8 md:mb-10">
-                  {slide.desc}
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <div className="relative z-30 w-full max-w-7xl ml-auto mr-0 px-6 mt-32 md:mt-48 mb-auto group">
+        <div className="relative">
+          <Swiper
+            modules={[Autoplay, Pagination, EffectFade, Navigation]}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            speed={1000}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            navigation={{
+              nextEl: '.hero-next',
+              prevEl: '.hero-prev',
+            }}
+            pagination={{ 
+              clickable: true, 
+              renderBullet: (index, className) => {
+                return `<span class="${className} w-3 h-3 bg-[#d64c4c] opacity-50 transition-all hover:bg-[#ebc543] hover:opacity-100"></span>`;
+              }
+            }}
+            className="w-full min-h-[400px] md:min-h-[500px] rounded-3xl overflow-visible pb-12"
+          >
+            {heroSlides.map((slide) => (
+              <SwiperSlide key={slide.id} className="pt-8">
+                <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 md:p-16 rounded-3xl">
+                  <span className="text-lg md:text-xl text-[#d64c4c] mb-3 md:mb-5 block">
+                    {slide.subtitle}
+                  </span>
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#d64c4c] tracking-tighter mb-5 md:mb-7 leading-[0.9] whitespace-pre-line">
+                    {slide.text}
+                  </h2>
+                  <p className="max-w-3xl mx-auto text-2xl md:text-3xl text-[#3b5947] leading-relaxed mb-7 md:mb-9 whitespace-pre-line">
+                    {slide.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    <a href="#" className="px-7 py-2.5 bg-[#d64c4c] text-white font-semibold rounded-full text-base hover:bg-[#c43e3e] transition-all duration-300 hover:scale-105 shadow-lg">
+                      Explore Collection
+                    </a>
+                    <a href="#" className="px-7 py-2.5 bg-[#24583d] text-white font-semibold rounded-full text-base hover:bg-[#1a3826] transition-all duration-300 hover:scale-105 shadow-lg">
+                      Our Menu
+                    </a>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          
+          {/* Custom Navigation Buttons */}
+          <button className="hero-prev absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-white/50 backdrop-blur border border-white/60 rounded-full text-[#24583d] shadow-lg transition-all hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <button className="hero-next absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-white/50 backdrop-blur border border-white/60 rounded-full text-[#24583d] shadow-lg transition-all hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
         
         <style jsx global>{`
           .swiper-pagination-bullet-active {
             width: 32px !important;
             border-radius: 9999px !important;
-            background-color: #d64c4c !important;
+            background-color: #ebc543 !important;
+            opacity: 1 !important;
           }
           .swiper-pagination-bullet {
             transition: all 0.3s ease;

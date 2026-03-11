@@ -9,6 +9,7 @@ export default function Contact() {
     email: "",
     message: "",
     subscribe: false,
+    survey: false,
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [showCard, setShowCard] = useState(false);
@@ -21,7 +22,8 @@ export default function Contact() {
   };
 
   const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, subscribe: e.target.checked }));
+    const { name, checked } = e.target;
+    setFormData(prev => ({ ...prev, [name]: checked }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,14 +33,19 @@ export default function Contact() {
     try {
       const subject = encodeURIComponent(`New message from ${formData.name}`);
       const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\nNewsletter Signup: ${formData.subscribe ? "Yes" : "No"}`
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\nNewsletter Signup: ${formData.subscribe ? "Yes" : "No"}\nSurvey Participant: ${formData.survey ? "Yes" : "No"}`
       );
       window.open(`mailto:2goborn@gmail.com?subject=${subject}&body=${body}`, "_self");
 
       setSentData({ name: formData.name, email: formData.email });
       setStatus("sent");
-      setShowCard(true);
-      setFormData({ name: "", email: "", message: "", subscribe: false });
+      
+      // Only show card if survey is checked
+      if (formData.survey) {
+        setShowCard(true);
+      }
+      
+      setFormData({ name: "", email: "", message: "", subscribe: false, survey: false });
     } catch {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 3000);
@@ -272,20 +279,40 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Newsletter Checkbox */}
-                <label htmlFor="contact-subscribe" className="flex items-start gap-4 cursor-pointer group p-4 bg-white rounded-xl border border-gray-100 hover:border-[var(--primary)]/20 transition-all">
-                  <input
-                    id="contact-subscribe"
-                    type="checkbox"
-                    checked={formData.subscribe}
-                    onChange={handleCheckbox}
-                    className="mt-1 w-4 h-4 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)]/20 accent-[var(--primary)]"
-                  />
-                  <div>
-                    <p className="text-sm font-bold text-[var(--text-dark)]">Sign up for our email list</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Get updates, promotions, and more delivered to your inbox.</p>
-                  </div>
-                </label>
+                {/* Checkboxes Container */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {/* Newsletter Checkbox */}
+                  <label htmlFor="contact-subscribe" className="flex items-start gap-4 cursor-pointer group p-4 bg-white rounded-xl border border-gray-100 hover:border-[var(--primary)]/20 transition-all">
+                    <input
+                      id="contact-subscribe"
+                      type="checkbox"
+                      name="subscribe"
+                      checked={formData.subscribe}
+                      onChange={handleCheckbox}
+                      className="mt-1 w-4 h-4 rounded border-gray-300 text-[var(--secondary)] focus:ring-[var(--secondary)]/20 accent-[var(--secondary)]"
+                    />
+                    <div>
+                      <p className="text-sm font-bold text-[var(--text-dark)] leading-tight">Join Email List</p>
+                      <p className="text-[10px] text-gray-400 mt-1">Get fresh updates.</p>
+                    </div>
+                  </label>
+
+                  {/* Survey Checkbox */}
+                  <label htmlFor="contact-survey" className="flex items-start gap-4 cursor-pointer group p-4 bg-white rounded-xl border border-gray-100 hover:border-[var(--primary)]/20 transition-all">
+                    <input
+                      id="contact-survey"
+                      type="checkbox"
+                      name="survey"
+                      checked={formData.survey}
+                      onChange={handleCheckbox}
+                      className="mt-1 w-4 h-4 rounded border-gray-300 text-[var(--secondary)] focus:ring-[var(--secondary)]/20 accent-[var(--secondary)]"
+                    />
+                    <div>
+                      <p className="text-sm font-bold text-[var(--text-dark)] leading-tight">Take our Survey</p>
+                      <p className="text-[10px] text-gray-400 mt-1">Get a Loyalty Card.</p>
+                    </div>
+                  </label>
+                </div>
 
                 {/* Submit Button */}
                 <button

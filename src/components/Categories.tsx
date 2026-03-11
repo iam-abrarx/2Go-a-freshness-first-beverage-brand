@@ -38,6 +38,7 @@ const categories = [
 export default function Categories() {
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Close overlay on escape
   useEffect(() => {
@@ -80,7 +81,7 @@ export default function Categories() {
         <Reveal>
           <div className="section-title text-left mb-20 max-w-2xl">
             <span className="text-[var(--primary)] font-black uppercase tracking-[5px] text-xs">Explore Menu</span>
-            <h2 className="text-6xl font-display uppercase mt-4 leading-tight">Our Mastermind<br/>Categories</h2>
+            <h2 className="text-6xl font-display uppercase mt-4 leading-tight">Our Product<br/>Categories</h2>
           </div>
         </Reveal>
 
@@ -189,10 +190,16 @@ export default function Categories() {
                             <button
                                 key={cat.id}
                                 onClick={() => {
-                                    setSelectedCat(cat.id);
-                                    if (selectedProduct) {
-                                        const firstInNew = products.find(p => p.category === cat.id);
-                                        if (firstInNew) setSelectedProduct(firstInNew);
+                                    if (selectedCat !== cat.id) {
+                                        setIsAnimating(true);
+                                        setTimeout(() => {
+                                            setSelectedCat(cat.id);
+                                            if (selectedProduct) {
+                                                const firstInNew = products.find(p => p.category === cat.id);
+                                                if (firstInNew) setSelectedProduct(firstInNew);
+                                            }
+                                            setTimeout(() => setIsAnimating(false), 50);
+                                        }, 350);
                                     }
                                 }}
                                 className={`flex-1 py-3 px-4 rounded-lg text-[9px] font-black uppercase tracking-[2px] transition-all duration-500 ${
@@ -210,13 +217,24 @@ export default function Categories() {
                 {/* Product List */}
                 <div className="flex-grow overflow-y-auto px-10 py-6 custom-scrollbar">
                     <div className="space-y-4">
-                        {filteredProducts.map((product) => (
+                        {filteredProducts.map((product, idx) => (
                             <div 
                                 key={product.id}
-                                onClick={() => setSelectedProduct(product)}
-                                className={`group flex items-center gap-6 p-5 rounded-xl transition-all duration-500 cursor-pointer border ${selectedProduct?.id === product.id ? 'bg-white shadow-xl border-gray-100 scale-[1.02]' : 'bg-[#f8f9fa] border-transparent hover:bg-white hover:border-gray-50'}`}
+                                onClick={() => {
+                                    if (selectedProduct?.id !== product.id) {
+                                        setIsAnimating(true);
+                                        // Timing fix: wait for the old product to "whoosh out" before switching data
+                                        setTimeout(() => {
+                                            setSelectedProduct(product);
+                                            // Short delay before "whoosh in" to ensure DOM is ready
+                                            setTimeout(() => setIsAnimating(false), 50);
+                                        }, 350); 
+                                    }
+                                }}
+                                className={`group flex items-center gap-6 p-5 rounded-xl transition-all duration-500 cursor-pointer border animate-in slide-in-from-bottom-4 fade-in fill-mode-both ${selectedProduct?.id === product.id ? 'bg-white shadow-xl border-gray-100 scale-[1.02]' : 'bg-[#f8f9fa] border-transparent hover:bg-white hover:border-gray-50 hover:shadow-md'}`}
+                                style={{ animationDelay: `${idx * 100}ms` }}
                             >
-                                <div className="w-16 h-16 relative flex-shrink-0 bg-white rounded-xl p-2 group-hover:scale-105 transition-transform duration-500 shadow-sm">
+                                <div className="w-24 h-24 relative flex-shrink-0 bg-white rounded-xl p-2 group-hover:scale-105 transition-transform duration-500 shadow-sm">
                                     <Image 
                                         src={product.image} 
                                         alt={product.name} 
@@ -250,7 +268,7 @@ export default function Categories() {
             {/* Detail: Product View (Right Pane) */}
             <div className={`flex-grow h-full bg-[#fcfcfc] transition-all duration-700 ${selectedProduct ? 'translate-x-0 opacity-100' : 'translate-x-[100%] opacity-0 pointer-events-none absolute'}`}>
                 {selectedProduct && (
-                    <div className="flex flex-col h-full bg-white">
+                    <div className="flex flex-col h-full bg-white animate-in fade-in duration-700">
                         {/* Detail Header */}
                         <div className="p-10 border-b border-gray-50 flex justify-between items-center">
                              <div className="flex items-center gap-4">
@@ -276,16 +294,16 @@ export default function Categories() {
                                 {/* Visual Area */}
                                 <div className="space-y-8">
                                     <div 
-                                        className="relative h-[400px] rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl group/img"
+                                        className="relative w-[260px] h-[430px] mx-auto rounded-3xl flex items-center justify-center overflow-hidden shadow-2xl group/img transition-colors duration-700"
                                         style={{ backgroundColor: currentCategory?.color }}
                                     >
-                                         <div className="absolute inset-x-0 bottom-0 top-1/2 bg-white/20 rounded-full blur-[80px] scale-0 group-hover/img:scale-110 transition-transform duration-1000" />
-                                         <div className="relative w-[300px] h-[380px] transform hover:scale-110 hover:rotate-3 transition-transform duration-700">
+                                         <div className="absolute inset-x-0 bottom-0 top-1/2 bg-white/20 rounded-full blur-[100px] scale-0 group-hover/img:scale-125 transition-transform duration-1000" />
+                                         <div className={`relative w-[240px] h-[410px] transform transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isAnimating ? 'translate-y-20 opacity-0 scale-90 rotate-12' : 'translate-y-0 opacity-100 scale-[1.5] rotate-0 group-hover/img:scale-[1.65] group-hover/img:rotate-3'}`}>
                                             <Image 
                                                 src={selectedProduct.image} 
                                                 alt={selectedProduct.name} 
                                                 fill 
-                                                className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.3)]"
+                                                className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.5)]"
                                             />
                                          </div>
                                     </div>
@@ -300,7 +318,7 @@ export default function Categories() {
                                             className="btn-primary !py-5 !px-8 !rounded-2xl flex items-center gap-3"
                                             onClick={() => window.open(`https://wa.me/8801715322138?text=I'm interested in ordering ${selectedProduct.name}`, '_blank')}
                                         >
-                                            Order Now
+                                            Inquire
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                             </svg>
@@ -309,9 +327,9 @@ export default function Categories() {
                                 </div>
 
                                 {/* Text Area */}
-                                <div className="space-y-12">
+                                <div className={`space-y-12 transition-all duration-700 delay-100 ${isAnimating ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0'}`}>
                                     <div>
-                                        <h2 className="text-5xl font-display uppercase leading-tight mb-6">{selectedProduct.name}</h2>
+                                        <h2 className="text-6xl font-display uppercase leading-none mb-6 tracking-tight">{selectedProduct.name}</h2>
                                         <p className="text-gray-500 leading-relaxed text-lg font-medium opacity-80">{selectedProduct.description}</p>
                                     </div>
 

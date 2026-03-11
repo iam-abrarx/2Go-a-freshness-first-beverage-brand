@@ -8,7 +8,7 @@ import { getAssetPath } from "@/lib/utils";
 const navLinks = [
   { name: "Home", href: "#design-hero" },
   { name: "Menu", href: "#categories" },
-  { name: "Highlights", href: "#banners" },
+  { name: "Stories", href: "#stories" },
   { name: "Reviews", href: "#reviews" },
   { name: "Locations", href: "#locations" },
   { name: "Contact", href: "#contact" },
@@ -76,27 +76,20 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-[500] flex justify-center p-0 transition-transform duration-500"
     >
       <div 
-        className={`flex items-center justify-between w-full transition-all duration-700 ease-in-out px-8 md:px-16 py-4 ${
-          isBeyondSection2 
-            ? "bg-[var(--primary)] shadow-2xl" 
-            : isScrolled
-            ? "bg-[#4a5b2e] shadow-md"
-            : "bg-[#4a5b2e]"
-        } ${isScrolled ? "py-3" : "py-6"}`}
+        className={`flex items-center justify-between w-full transition-all duration-700 ease-in-out px-8 md:px-16 py-4 bg-[var(--primary)] ${
+          isScrolled ? "shadow-lg py-3" : "py-6"
+        }`}
       >
         {/* Logo */}
         <Link href="/" className="relative flex items-center gap-3 group">
-          <div className="relative w-10 h-10 transition-transform group-hover:scale-110 active:scale-95">
+          <div className="relative w-24 h-10 md:w-28 md:h-12 transition-transform group-hover:scale-110 active:scale-95">
             <Image 
               src={getAssetPath("/assets/logo.png")} 
               alt="2GO Logo" 
               fill 
-              className="object-contain"
+              className="object-contain object-left"
             />
           </div>
-          <span className={`text-xl font-display font-black tracking-tighter transition-colors duration-500 text-white`}>
-            2GO
-          </span>
         </Link>
 
         {/* Desktop Links */}
@@ -108,10 +101,8 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, link.href)}
               className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[2px] transition-all duration-500 ${
                 activeSection === link.href.substring(1)
-                  ? (link.name === "Menu" ? "text-[#307351] scale-105 bg-white/10" : "bg-white text-[#4a5b2e] shadow-lg scale-105")
-                  : link.name === "Menu"
-                  ? "text-[#307351] hover:scale-105 font-extrabold"
-                  : "text-white/60 hover:text-white"
+                  ? "bg-white text-[var(--primary)] shadow-lg scale-105"
+                  : "text-white/70 hover:text-white"
               }`}
             >
               {link.name}
@@ -128,7 +119,7 @@ export default function Navbar() {
                 isBeyondSection2 ? "!bg-[var(--yellow)] !text-[var(--text-dark)]" : "!bg-white !text-[var(--secondary)]"
             }`}
            >
-            Order Now
+            Find Us
            </a>
         </div>
 
@@ -147,7 +138,7 @@ export default function Navbar() {
       <div 
         className={`fixed inset-0 z-[400] transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] md:hidden flex flex-col items-center justify-center text-center p-12 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        } ${isBeyondSection2 ? "bg-[#4a5b2e]" : "bg-white"}`}
+        } bg-[var(--primary)]`}
       >
         <div className="absolute top-12 left-1/2 -translate-x-1/2 w-20 h-20 opacity-10">
            <Image src={getAssetPath("/assets/logo.png")} alt="" fill className="object-contain" />
@@ -161,9 +152,7 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, link.href)}
               className={`text-4xl font-display uppercase tracking-tighter transition-all duration-500 ${
                 activeSection === link.href.substring(1) 
-                  ? (link.name === "Menu" ? "text-[#307351] scale-110" : "text-white scale-110")
-                  : link.name === "Menu"
-                  ? "text-[#307351] hover:scale-105"
+                  ? "text-[var(--primary)] bg-white px-6 py-2 rounded-xl scale-110"
                   : "text-white/40 hover:text-white"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
