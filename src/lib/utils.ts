@@ -1,4 +1,4 @@
-export const basePath = "/2Go-a-freshness-first-beverage-brand";
+export const basePath = "";
 
 export const getAssetPath = (path: string) => {
   if (!path) return "";
@@ -15,10 +15,5 @@ export const getAssetPath = (path: string) => {
   // Ensure the path starts with a slash
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   
-  // Prevent double prefixing if the path already contains the base path
-  if (normalizedPath.startsWith(basePath)) {
-    return normalizedPath;
-  }
-  
-  return `${basePath}${normalizedPath}`;
+  return normalizedPath;
 };
